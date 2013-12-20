@@ -1,6 +1,13 @@
 
 function IScroll (el, options) {
-	this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
+	var w = el;
+	if ( typeof el == 'string' ) {
+		w = document.querySelector(el);
+		if ( w == null ) {
+			w = document.getElementById(el);
+		}
+	}
+	this.wrapper = el;
 	this.scroller = this.wrapper.children[0];
 	this.scrollerStyle = this.scroller.style;		// cache style for better performance
 
